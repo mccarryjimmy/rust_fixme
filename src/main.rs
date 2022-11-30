@@ -2,6 +2,7 @@ use std::fmt::{self, Formatter, Display};
 
 /* Demonstrates printing of a user defined struct using println! macro.*/
 
+///struct for name of a city and its location in latitude and longitude
 struct City {
     name: &'static str,
     // Latitude
@@ -10,6 +11,7 @@ struct City {
     lon: f32,
 }
 
+///used to format print statements for the city struct as name: lat N lon W
 impl Display for City {
     // `f` is a buffer, this method must write the formatted string into it
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
@@ -21,7 +23,7 @@ impl Display for City {
                self.name, self.lat.abs(), lat_c, self.lon.abs(), lon_c)
     }
 }
-
+///struct to hold RGB values of a color
 #[derive(Debug)]
 struct Color {
     red: u8,
@@ -29,6 +31,15 @@ struct Color {
     blue: u8,
 }
 
+///used to format printing colors as red: value, green: value, blue: value
+impl Display for Color 
+{
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result
+    {
+        write!(f, "red: {}, green: {}, blue: {}", self.red, self.green, self.blue)
+    }
+}
+///declares multiple City and Color variables and prints their values
 fn main() {
     for city in [
         City { name: "Glassboro", lat: 39.702892, lon: -75.111839 },
@@ -43,7 +54,6 @@ fn main() {
         Color { red: 0, green: 3, blue: 254 },
         Color { red: 0, green: 0, blue: 0 },
     ].iter() {
-        // Hint : Fix the code so you can print it using {}
-        println!("{:?}", *color);
+        println!("{}", *color);
     }
 }

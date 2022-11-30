@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["main","declares multiple City and Color variables and prints their values"]],"struct":[["City","struct for name of a city and its location in latitude and longitude"],["Color","struct to hold RGB values of a color"]]};
